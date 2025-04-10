@@ -1,0 +1,7 @@
+{
+  "UniqueModName": "NBKRedSpy_StorageSort",
+  "Assemblies": [
+    "StorageSort.dll"
+  ],
+  "Dependencies": []
+}

@@ -14,6 +14,7 @@ namespace StorageSort
     public class ModConfig
     {
         public KeyCode SortKey = KeyCode.S;
+        public KeyCode DropKey = KeyCode.D;
 
         public static ModConfig LoadConfig(string configPath)
         {

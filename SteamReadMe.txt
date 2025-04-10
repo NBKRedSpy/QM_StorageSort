@@ -1,8 +1,25 @@
-[h1]Storage Sort[/h1]
+[h1]Storage Sort and Drop[/h1]
 
 
-Sorts containers in raids with a hotkey.
+[h1]Beta Only[/h1]
+
+Currently this only supports the opt in beta.
+
+[h1]Docs[/h1]
+
+Sorts or drops all items in a container.
+By default S sorts and D drops all items.
+
+The drop key is useful when dropping gas from barrels.
+
+See the Configuration section below to change hot keys.
+
+Sorts containers in raids with a hotkey.  Defaults to S.
 For example, corpse piles, containers, and floor items.
+
+Also can drop all items in a container by pressing the D key.  Particularly useful when emptying gas barrels.
+
+Both hotkeys can be configured.  See the Configuration section below.
 
 [h1]Configuration[/h1]
 
@@ -24,6 +41,14 @@ The configuration file will be created on the first game run and can be found at
 [td]The key that sorts the current storage inventory
 [/td]
 [/tr]
+[tr]
+[td]DropKey
+[/td]
+[td]D
+[/td]
+[td]Drops all items in a container.
+[/td]
+[/tr]
 [/table]
 
 [h2]Key List[/h2]
@@ -40,3 +65,10 @@ Thanks!
 [h1]Source Code[/h1]
 
 Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSort
+
+[h1]Change Log[/h1]
+
+[h2]2.0.0[/h2]
+[list]
+[*]Added Drop All key.
+[/list]

@@ -2,9 +2,6 @@
 
 ![thumbnail icon](media/thumbnail.png)
 
-# Beta Only
-Currently this only supports the opt in beta.
-
 # Docs
 
 Sorts or drops all items in a container.  

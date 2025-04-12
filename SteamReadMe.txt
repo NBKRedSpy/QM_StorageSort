@@ -1,10 +1,6 @@
 [h1]Storage Sort and Drop[/h1]
 
 
-[h1]Beta Only[/h1]
-
-Currently this only supports the opt in beta.
-
 [h1]Docs[/h1]
 
 Sorts or drops all items in a container.

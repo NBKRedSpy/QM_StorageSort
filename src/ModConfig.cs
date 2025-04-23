@@ -13,7 +13,10 @@ namespace StorageSort
 {
     public class ModConfig
     {
+        [JsonConverter(typeof(StringEnumConverter))]    
         public KeyCode SortKey = KeyCode.S;
+        
+        [JsonConverter(typeof(StringEnumConverter))]
         public KeyCode DropKey = KeyCode.D;
 
         public static ModConfig LoadConfig(string configPath)

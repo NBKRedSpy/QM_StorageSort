@@ -64,6 +64,12 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 
 [h1]Change Log[/h1]
 
+[h2]2.0.1[/h2]
+[list]
+[*]Fixed mod config using key codes instead of the string version.
+[*]Thanks goes to Steam user Traveler for reporting this issue.
+[/list]
+
 [h2]2.0.0[/h2]
 [list]
 [*]Added Drop All key.

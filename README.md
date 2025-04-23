@@ -11,8 +11,6 @@ The drop key is useful when dropping gas from barrels.
 
 See the [Configuration](#configuration) section below to change hot keys.
 
-
-
 Sorts containers in raids with a hotkey.  Defaults to S.
 For example, corpse piles, containers, and floor items.
 
@@ -42,6 +40,10 @@ Thanks!
 Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSort
 
 # Change Log
+
+## 2.0.1 
+* Fixed mod config using key codes instead of the string version.
+* Thanks goes to Steam user Traveler for reporting this issue.
 
 ## 2.0.0
 * Added Drop All key.

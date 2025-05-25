@@ -1,21 +1,33 @@
-[h1]Storage Sort and Drop[/h1]
+[h1]Storage Sort, Drop, and Single Drop[/h1]
 
 
 [h1]Docs[/h1]
 
 Sorts or drops all items in a container.
 By default S sorts and D drops all items.
+Adds the context menu command "Drop One".
 
-The drop key is useful when dropping gas from barrels.
+The drop key is useful when dropping gas from barrels in one keystroke.
+The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.
 
 See the Configuration section below to change hot keys.
 
-Sorts containers in raids with a hotkey.  Defaults to S.
-For example, corpse piles, containers, and floor items.
-
-Also can drop all items in a container by pressing the D key.  Particularly useful when emptying gas barrels.
-
 Both hotkeys can be configured.  See the Configuration section below.
+
+[h1]"Drop One" and Context Menu Hotkeys Mod[/h1]
+
+To add a hotkey to the "Drop One" function in the Context Menu Hotkeys mod,
+
+Add this to the list of keys in the Context Menu Hokeys config file:
+[code]
+    {
+      "Key": "F",
+      "Command": 620000
+    },
+
+[/code]
+
+The above will add the key F as the hotkey when the context menu is open.
 
 [h1]Configuration[/h1]
 
@@ -49,7 +61,7 @@ The configuration file will be created on the first game run and can be found at
 
 [h2]Key List[/h2]
 
-The list of valid keyboard keys can be found  at the bottom of https://docs.unity3d.com/ScriptReference/KeyCode.html
+The list of valid keyboard keys can be found at the bottom of https://docs.unity3d.com/ScriptReference/KeyCode.html
 Beware that numbers 0-9 are Alpha0 - Alpha9.  Most of the other keys are as expected such as X for X.
 Use "None" to not bind the key.
 
@@ -63,6 +75,11 @@ Thanks!
 Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSort
 
 [h1]Change Log[/h1]
+
+[h2]2.1.0[/h2]
+[list]
+[*]Added "Drop One" command.
+[/list]
 
 [h2]2.0.1[/h2]
 [list]

@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using MGSC;
+using StorageSort.DropOne;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,6 +31,21 @@ namespace StorageSort
 
             new Harmony("NBKRedSpy_" + ConfigDirectories.ModAssemblyName).PatchAll();
         }
-     
+
+        [Hook(ModHookType.DungeonStarted)]
+        public static void DungeonStarted(IModContext context)
+        {
+            Inventory_TakeOrEquip_Patch.IsDungeonMode = true;
+        }
+
+
+
+        [Hook(ModHookType.DungeonFinished)]
+        public static void DungeonFinished(IModContext context)
+        {
+            Inventory_TakeOrEquip_Patch.IsDungeonMode = false;
+
+        }
+
     }
 }

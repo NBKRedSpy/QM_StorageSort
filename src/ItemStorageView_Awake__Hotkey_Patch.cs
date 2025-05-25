@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HarmonyLib;
+using MGSC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HarmonyLib;
-using MGSC;
 using UnityEngine;
+using UnityEngine.Device;
 
 namespace StorageSort
 {
@@ -16,6 +17,9 @@ namespace StorageSort
         {
             const string GameObjectName = "SortHotkey";
 
+            //screen.DragControllerDropOutsideCallback(item);
+            //screen.DragControllerInteractionCallback(InventoryInteractionType.DropOutside);
+            //screen.DragControllerRefreshCallback();
             if (__instance.GetComponent<ItemsStorageViewUpdate>() == null)
             {
                 ItemsStorageViewUpdate update = __instance.gameObject.AddComponent<ItemsStorageViewUpdate>();

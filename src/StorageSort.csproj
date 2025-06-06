@@ -36,10 +36,16 @@
 			<HintPath>$(ManagedPath)UnityEngine.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+		  <HintPath>$(ManagedPath)UnityEngine.AudioModule.dll</HintPath>
+		</Reference>
 		<Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
 			<SpecificVersion>False</SpecificVersion>
 			<HintPath>$(ManagedPath)UnityEngine.CoreModule.dll</HintPath>
 			<Private>False</Private>
+		</Reference>
+		<Reference Include="UnityEngine.IMGUIModule">
+		  <HintPath>$(ManagedPath)UnityEngine.IMGUIModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
 			<SpecificVersion>False</SpecificVersion>

@@ -13,11 +13,11 @@ namespace StorageSort
 {
     public class ModConfig
     {
-        [JsonConverter(typeof(StringEnumConverter))]    
-        public KeyCode SortKey = KeyCode.S;
+        public KeyChord SortKey { get; set; } = new KeyChord(KeyCode.S);
         
-        [JsonConverter(typeof(StringEnumConverter))]
-        public KeyCode DropKey = KeyCode.D;
+        public KeyChord DropKey { get; set; } = new KeyChord(KeyCode.D);
+
+        public KeyChord RecycleAllKey { get; set; } = new KeyChord(KeyCode.LeftShift, KeyCode.R);
 
         public static ModConfig LoadConfig(string configPath)
         {
@@ -26,7 +26,16 @@ namespace StorageSort
             JsonSerializerSettings serializerSettings = new JsonSerializerSettings()
             {
                 Formatting = Formatting.Indented,
+                ObjectCreationHandling = ObjectCreationHandling.Replace
             };
+
+            StringEnumConverter stringEnumConverter = new StringEnumConverter()
+            {
+                AllowIntegerValues = true
+            };
+
+            serializerSettings.Converters.Add(stringEnumConverter);
+
 
             if (File.Exists(configPath))
             {

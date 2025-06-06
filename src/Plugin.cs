@@ -21,9 +21,13 @@ namespace StorageSort
 
         public static Logger Logger = new Logger();
 
+        public static State State { get; private set; }
+
         [Hook(ModHookType.AfterConfigsLoaded)]
         public static void AfterConfig(IModContext context)
         {
+
+            State = context.State;
 
             Directory.CreateDirectory(ConfigDirectories.ModPersistenceFolder);
 

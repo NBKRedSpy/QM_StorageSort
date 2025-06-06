@@ -97,34 +97,6 @@ namespace StorageSort
         }
 
 
-        #region Key Event Hack
-
-        //TODO:  This needs to be put into it's own class.
-
-        internal static OnGuiKeyHandler KeyHandler = new OnGuiKeyHandler();
-
-        internal void OnDisable()
-        {
-            KeyHandler.Clear();
-        }
-
-        internal void OnDestroy()
-        {
-            KeyHandler.Clear();
-        }
-
-        /// <summary>
-        /// Determines if the keys are being pressed.
-        /// </summary>
-        internal void OnGUI()
-        {
-            KeyHandler.ProcessOnGuiLoop();
-        }
-
-        #endregion
-
-
-
         private void SortItems(ItemStorage storage)
         {
             storage.SortWithExpandByTypeAndName(Bootstrap._state.Get<SpaceTime>());

@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using MGSC;
 using StorageSort.DropOne;
+using StorageSort.Mcm;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +22,9 @@ namespace StorageSort
 
         public static Logger Logger = new Logger();
 
+        private static McmConfiguration McmConfiguration { get; set; }
+
+
         [Hook(ModHookType.AfterConfigsLoaded)]
         public static void AfterConfig(IModContext context)
         {
@@ -28,6 +32,9 @@ namespace StorageSort
             Directory.CreateDirectory(ConfigDirectories.ModPersistenceFolder);
 
             Config = ModConfig.LoadConfig(ConfigDirectories.ConfigPath);
+
+            McmConfiguration = new McmConfiguration(Config);
+            McmConfiguration.TryConfigure();
 
             new Harmony("NBKRedSpy_" + ConfigDirectories.ModAssemblyName).PatchAll();
         }

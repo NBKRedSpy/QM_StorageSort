@@ -74,7 +74,17 @@ Thanks!
 
 Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSort
 
+[h1]Credits[/h1]
+[list]
+[*]Special thanks to Crynano for his excellent Mod Configuration Menu.
+[/list]
+
 [h1]Change Log[/h1]
+
+[h2]2.3.0[/h2]
+[list]
+[*]MCM integration.
+[/list]
 
 [h2]2.1.0[/h2]
 [list]

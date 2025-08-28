@@ -52,7 +52,13 @@ Thanks!
 # Source Code
 Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSort
 
+# Credits
+* Special thanks to Crynano for his excellent Mod Configuration Menu. 
+
 # Change Log
+## 2.3.0
+* MCM integration.
+
 ## 2.1.0
 * Added "Drop One" command.
 

@@ -20,7 +20,6 @@ namespace StorageSort
         public void Update()
         {
             ItemStorage storage = ItemsStorageView?.Storage;
-            if (storage?.Empty ?? true) return;
 
             if (Input.GetKeyDown(SortKey))
             {

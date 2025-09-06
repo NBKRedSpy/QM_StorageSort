@@ -56,6 +56,9 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 2.4.0
+* Drop All now always closes screen.  Useful for muscle memory when opening a barrel and not realizing it was empty.
+
 ## 2.3.0
 * MCM integration.
 

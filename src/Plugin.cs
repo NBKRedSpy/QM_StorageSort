@@ -2,18 +2,12 @@
 using MGSC;
 using StorageSort.DropOne;
 using StorageSort.Mcm;
-using System;
-using System.Collections.Generic;
+using StorageSort_Bootstrap;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 namespace StorageSort
 {
-    public static class Plugin
+    public class Plugin :BootstrapMod
     {
 
         public static ConfigDirectories ConfigDirectories = new ConfigDirectories();
@@ -24,10 +18,11 @@ namespace StorageSort
 
         private static McmConfiguration McmConfiguration { get; set; }
 
-
-        [Hook(ModHookType.AfterConfigsLoaded)]
-        public static void AfterConfig(IModContext context)
+        public Plugin(HookEvents hookEvents, bool isBeta) : base(hookEvents, isBeta)
         {
+
+            HookEvents.DungeonStarted += DungeonStarted;
+            HookEvents.DungeonFinished += DungeonFinished;
 
             Directory.CreateDirectory(ConfigDirectories.ModPersistenceFolder);
 
@@ -39,15 +34,11 @@ namespace StorageSort
             new Harmony("NBKRedSpy_" + ConfigDirectories.ModAssemblyName).PatchAll();
         }
 
-        [Hook(ModHookType.DungeonStarted)]
         public static void DungeonStarted(IModContext context)
         {
             Inventory_TakeOrEquip_Patch.IsDungeonMode = true;
         }
 
-
-
-        [Hook(ModHookType.DungeonFinished)]
         public static void DungeonFinished(IModContext context)
         {
             Inventory_TakeOrEquip_Patch.IsDungeonMode = false;

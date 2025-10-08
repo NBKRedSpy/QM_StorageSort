@@ -1,6 +1,10 @@
 [h1]Storage Sort, Drop, and Single Drop[/h1]
 
 
+[h1]Important Notes for Opt In Beta[/h1]
+
+For users that are running the opt in beta, please see the documentation [url=https://github.com/NBKRedSpy/QM_StorageSort/blob/beta/README.md]here[/url] instead.
+
 [h1]Docs[/h1]
 
 Sorts or drops all items in a container.

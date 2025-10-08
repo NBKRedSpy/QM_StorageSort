@@ -2,6 +2,11 @@
 
 ![thumbnail icon](media/thumbnail.png)
 
+
+# Important Notes for Opt In Beta
+
+For users that are running the opt in beta, please see the documentation [here](https://github.com/NBKRedSpy/QM_StorageSort/blob/beta/README.md) instead.
+
 # Docs
 
 Sorts or drops all items in a container.  
@@ -56,6 +61,9 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 2.4.1 
+* Multi version support.
+
 ## 2.4.0
 * Drop All now always closes screen.  Useful for muscle memory when opening a barrel and not realizing it was empty.
 

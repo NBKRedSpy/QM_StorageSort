@@ -10,6 +10,8 @@ Features:
 [*]Adds the context menu command "Drop One".
 [/list]
 
+Each feature can be disabled in the configuration by setting the key to None.
+
 The drop key is useful when dropping gas from barrels in one keystroke.
 
 The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.

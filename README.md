@@ -5,9 +5,11 @@
 # Docs
 
 Features:
-* Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.
+* Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.  
 * Adds a Drop All hotkey to containers.  Defaults to D.
 * Adds the context menu command "Drop One".
+
+Each feature can be disabled in the configuration by setting the key to None.
 
 The drop key is useful when dropping gas from barrels in one keystroke.
 

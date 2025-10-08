@@ -1,0 +1,10 @@
+{
+  "UniqueModName": "NBKRedSpy_StorageSort",
+  "Assemblies": [
+    "StorageSort_Bootstrap.dll"
+  ],
+  "Dependencies": [],
+  "SteamTags": [
+    "Quality of Life"
+  ]
+}

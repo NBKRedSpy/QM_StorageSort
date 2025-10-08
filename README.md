@@ -4,11 +4,13 @@
 
 # Docs
 
-Sorts or drops all items in a container.  
-By default S sorts and D drops all items.  
-Adds the context menu command "Drop One".
+Features:
+* Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.
+* Adds a Drop All hotkey to containers.  Defaults to D.
+* Adds the context menu command "Drop One".
 
 The drop key is useful when dropping gas from barrels in one keystroke.
+
 The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.
 
 See the [Configuration](#configuration) section below to change hot keys.
@@ -37,7 +39,8 @@ The configuration file will be created on the first game run and can be found at
 
 |Name|Default|Description|
 |--|--|--|
-|SortKey|S|The key that sorts the current storage inventory|
+|SortKey|S|The key that sorts the current storage inventory when in a raid.|
+|SpaceSortKey|S|The key that sorts the current storage inventory when in space.|
 |DropKey|D|Drops all items in a container.|
 
 ## Key List
@@ -56,6 +59,12 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 3.0.0
+* Added space cargo screen sort.  This functionality was previously available via the Sort To Tabs mod; However, the game now has a cargo distribution ability and that mod has been decommissioned.
+
+## 2.4.1
+* Multi version support.
+
 ## 2.4.0
 * Drop All now always closes screen.  Useful for muscle memory when opening a barrel and not realizing it was empty.
 

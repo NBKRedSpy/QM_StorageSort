@@ -15,7 +15,11 @@ namespace StorageSort
     {
         [JsonConverter(typeof(StringEnumConverter))]    
         public KeyCode SortKey = KeyCode.S;
-        
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public KeyCode SpaceSortKey = KeyCode.S;
+
+
         [JsonConverter(typeof(StringEnumConverter))]
         public KeyCode DropKey = KeyCode.D;
 

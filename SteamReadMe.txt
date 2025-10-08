@@ -81,6 +81,11 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 
 [h1]Change Log[/h1]
 
+[h2]2.4.1[/h2]
+[list]
+[*]Multi version support.
+[/list]
+
 [h2]2.4.0[/h2]
 [list]
 [*]Drop All now always closes screen.  Useful for muscle memory when opening a barrel and not realizing it was empty.

@@ -83,6 +83,14 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 [*]Special thanks to Crynano for his excellent Mod Configuration Menu.
 [/list]
 
+[h2]3.1.0[/h2]
+[list]
+[*]0.9.7+ Only
+[*]Added MCM support for key binding.
+[*]Fix for sort key invoked while in space.  Missed in previous update.
+[*]Internal - Upgraded MCM configuration and all related requirements to the latest versions.
+[/list]
+
 [h1]Change Log[/h1]
 
 [h2]2.4.1[/h2]

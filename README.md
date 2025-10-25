@@ -61,6 +61,10 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 3.0.1
+* 0.9.7+ Only
+* Fix for sort key invoking when not focused.
+
 ## 3.0.0
 * Added space cargo screen sort.  This functionality was previously available via the Sort To Tabs mod; However, the game now has a cargo distribution ability and that mod has been decommissioned.
 

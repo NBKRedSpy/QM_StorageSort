@@ -8,31 +8,25 @@ namespace StorageSort
     {
         public ItemsStorageView ItemsStorageView { get; set; }
 
-        private static KeyCode SortKey;
-        private static KeyCode DropKey;
-
-        static ItemsStorageViewUpdate()
-        {
-            SortKey = Plugin.Config.SortKey;
-            DropKey = Plugin.Config.DropKey;
-        }
-
         public void Update()
         {
             ItemStorage storage = ItemsStorageView?.Storage;
 
-            if (Input.GetKeyDown(SortKey))
+            if (!Input.anyKeyDown) return;
+
+            InventoryScreen screen;
+
+            screen = UI.GetActiveViews().OfType<InventoryScreen>().FirstOrDefault();
+
+            //Mono doesn't like null forgiving operators
+            if (screen == null || !screen.isActiveAndEnabled) return;
+
+            if (Input.GetKeyDown(Plugin.Config.SortKey))
             {
                 SortItems(storage);
             }
-            else if (Input.GetKeyDown(DropKey))
+            else if (Input.GetKeyDown(Plugin.Config.DropKey))
             {
-                InventoryScreen screen;
-
-                screen = UI.GetActiveViews().OfType<InventoryScreen>().FirstOrDefault();
-
-                //Mono doesn't like null forgiving operators
-                if (screen == null || !screen.isActiveAndEnabled ) return;
 
                 for (int i = storage.Items.Count - 1; i >= 0; i--)
                 {

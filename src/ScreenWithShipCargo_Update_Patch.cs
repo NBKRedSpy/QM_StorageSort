@@ -14,7 +14,7 @@ namespace StorageSort
     {
         public static void Prefix(ScreenWithShipCargo __instance)
         {
-            if (__instance.isActiveAndEnabled && Input.GetKeyUp(Plugin.Config.SpaceSortKey))
+            if (__instance.isActiveAndEnabled && Input.GetKeyDown(Plugin.Config.SpaceSortKey))
             {
                 __instance.SortArsenalButtonOnClick(null, 1);
             }

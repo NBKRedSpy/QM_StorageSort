@@ -26,7 +26,7 @@ namespace StorageSort
 
             Directory.CreateDirectory(ConfigDirectories.ModPersistenceFolder);
 
-            Config = ModConfig.LoadConfig(ConfigDirectories.ConfigPath);
+            Config = new ModConfig(ConfigDirectories.ConfigPath).LoadConfig();
 
             McmConfiguration = new McmConfiguration(Config);
             McmConfiguration.TryConfigure();

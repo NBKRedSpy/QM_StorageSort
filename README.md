@@ -15,9 +15,7 @@ The drop key is useful when dropping gas from barrels in one keystroke.
 
 The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.
 
-See the [Configuration](#configuration) section below to change hot keys.
-
-Both hotkeys can be configured.  See the [Configuration](#configuration) section below.
+The keys can be configured using the Mods button on the main screen or directly in the config file.
 
 # "Drop One" and Context Menu Hotkeys Mod
 To add a hotkey to the "Drop One" function in the Context Menu Hotkeys mod, 
@@ -33,7 +31,6 @@ Add this to the list of keys in the Context Menu Hokeys config file:
 ```
 
 The above will add the key F as the hotkey when the context menu is open.
-
 
 # Configuration
 
@@ -61,6 +58,12 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 3.1.0 
+* 0.9.7+ Only
+* Added MCM support for key binding.
+* Fix for sort key invoked while in space.  Missed in previous update.
+* Internal - Upgraded MCM configuration and all related requirements to the latest versions.
+
 ## 3.0.1
 * 0.9.7+ Only
 * Fix for sort key invoking when not focused.

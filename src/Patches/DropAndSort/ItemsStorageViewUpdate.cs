@@ -2,8 +2,11 @@
 using System.Linq;
 using UnityEngine;
 
-namespace StorageSort.Patches
+namespace StorageSort.Patches.DropAndSort
 {
+    /// <summary>
+    /// Handles the in raid "drop all" and sort of storage invnetory key presses.
+    /// </summary>
     public class ItemsStorageViewUpdate : MonoBehaviour
     {
         public ItemsStorageView ItemsStorageView { get; set; }

@@ -7,8 +7,12 @@ using HarmonyLib;
 using MGSC;
 using UnityEngine;
 
-namespace StorageSort.Patches
+namespace StorageSort.Patches.DropAndSort
 {
+
+    /// <summary>
+    /// ItemsStorageView doesn't have an update, so attach an update handler to it to process hotkeys.
+    /// </summary>
     [HarmonyPatch(typeof(ItemsStorageView), nameof(ItemsStorageView.Awake))]    
     public static class ItemStorageView_Awake__Hotkey_Patch
     {

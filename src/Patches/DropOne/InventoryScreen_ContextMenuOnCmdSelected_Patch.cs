@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace StorageSort.DropOne
+namespace StorageSort.Patches.DropOne
 {
     //Executes the custom commands from the context menu.
     [HarmonyPatch(typeof(InventoryScreen), nameof(InventoryScreen.ContextMenuOnCmdSelected))]

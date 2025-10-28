@@ -7,7 +7,7 @@ using HarmonyLib;
 using MGSC;
 using UnityEngine;
 
-namespace StorageSort
+namespace StorageSort.Patches
 {
     [HarmonyPatch(typeof(ItemsStorageView), nameof(ItemsStorageView.Awake))]    
     public static class ItemStorageView_Awake__Hotkey_Patch

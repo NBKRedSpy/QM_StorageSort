@@ -19,14 +19,41 @@ namespace StorageSort
         {
         }
 
-        [JsonConverter(typeof(StringEnumConverter))]    
         public KeyCode SortKey { get; set; } = KeyCode.S;
 
-        [JsonConverter(typeof(StringEnumConverter))]
+        /// <summary>
+        /// Hold this key while pressing the SortKey to sort the backpack when in a raid.
+        /// Set to Keycode.None to disable. 
+        /// </summary>
+        public KeyCode BackpackSortModifierKey { get; set; } = KeyCode.LeftShift;
+
         public KeyCode SpaceSortKey { get; set; } = KeyCode.S;
 
-
-        [JsonConverter(typeof(StringEnumConverter))]
         public KeyCode DropKey { get; set; } = KeyCode.D;
+
+
+        /// <summary>
+        /// True if the backpack sort key combination is pressed, and not disabled.
+        /// </summary>
+        /// <returns></returns>
+        public bool IsBackpackSortPressed()
+        {
+            if(BackpackSortModifierKey == KeyCode.None)
+            {
+                return false;
+            }
+
+            return Input.GetKeyDown(SortKey) && Input.GetKey(BackpackSortModifierKey);
+        }
+
+        /// <summary>
+        /// Returns true if the raid sort key is pressed (and not the backpack sort).
+        /// </summary>
+        /// <returns></returns>
+        public bool IsRaidSortPressed()
+        {
+            return !IsBackpackSortPressed() && Input.GetKeyDown(SortKey);
+            
+        }   
     }
 }

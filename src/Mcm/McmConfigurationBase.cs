@@ -3,7 +3,6 @@ using MGSC;
 using ModConfigMenu.Contracts;
 using ModConfigMenu.Implementations;
 using ModConfigMenu.Objects;
-using RedsOptionalTweaks.Mcm;
 using StorageSort;
 using System;
 using System.Collections;

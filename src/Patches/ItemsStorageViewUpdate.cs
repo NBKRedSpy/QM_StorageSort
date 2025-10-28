@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace StorageSort
+namespace StorageSort.Patches
 {
     public class ItemsStorageViewUpdate : MonoBehaviour
     {
@@ -21,7 +21,7 @@ namespace StorageSort
             //Mono doesn't like null forgiving operators
             if (screen == null || !screen.isActiveAndEnabled) return;
 
-            if (Input.GetKeyDown(Plugin.Config.SortKey))
+            if (Plugin.Config.IsRaidSortPressed())
             {
                 SortItems(storage);
             }

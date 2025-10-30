@@ -6,6 +6,7 @@
 Features:
 [list]
 [*]Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.
+[*]Adds the ability to sort the merc's backpack when in a raid.  Defaults to Shift+S.
 [*]Adds a Drop All hotkey to containers.  Defaults to D.
 [*]Adds the context menu command "Drop One".
 [/list]
@@ -16,9 +17,7 @@ The drop key is useful when dropping gas from barrels in one keystroke.
 
 The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.
 
-See the Configuration section below to change hot keys.
-
-Both hotkeys can be configured.  See the Configuration section below.
+The keys can be configured using the Mods button on the main screen or directly in the config file.
 
 [h1]"Drop One" and Context Menu Hotkeys Mod[/h1]
 
@@ -53,6 +52,14 @@ The configuration file will be created on the first game run and can be found at
 [td]S
 [/td]
 [td]The key that sorts the current storage inventory when in a raid.
+[/td]
+[/tr]
+[tr]
+[td]BackpackSortModifierKey
+[/td]
+[td]Shift
+[/td]
+[td]The key to hold down while pressing the 'Sort Key' to sort the player's backpack instead of a container. Set to None to disable backpack sort. This currently only works when in a raid.
 [/td]
 [/tr]
 [tr]
@@ -94,6 +101,20 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 [/list]
 
 [h1]Change Log[/h1]
+
+[h2]3.2.0[/h2]
+[list]
+[*]0.9.7+ Only
+[*]Added ability to sort the player's backpack when in raid.
+[/list]
+
+[h2]3.1.0[/h2]
+[list]
+[*]0.9.7+ Only
+[*]Added MCM support for key binding.
+[*]Fix for sort key invoked while in space.  Missed in previous update.
+[*]Internal - Upgraded MCM configuration and all related requirements to the latest versions.
+[/list]
 
 [h2]3.0.1[/h2]
 [list]

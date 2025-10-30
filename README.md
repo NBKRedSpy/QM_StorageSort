@@ -60,13 +60,21 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 # Credits
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
+# Change Log
+## 3.2.0
+* 0.9.7+ Only
+* Added ability to sort the player's backpack when in raid.
+
 ## 3.1.0 
 * 0.9.7+ Only
 * Added MCM support for key binding.
 * Fix for sort key invoked while in space.  Missed in previous update.
 * Internal - Upgraded MCM configuration and all related requirements to the latest versions.
 
-# Change Log
+## 3.0.1
+* 0.9.7+ Only
+* Fix for sort key invoking when not focused.
+
 ## 2.4.1 
 * Multi version support.
 

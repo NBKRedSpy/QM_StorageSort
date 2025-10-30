@@ -2,8 +2,11 @@
 using System.Linq;
 using UnityEngine;
 
-namespace StorageSort
+namespace StorageSort.Patches.DropAndSort
 {
+    /// <summary>
+    /// Handles the in raid "drop all" and sort of storage invnetory key presses.
+    /// </summary>
     public class ItemsStorageViewUpdate : MonoBehaviour
     {
         public ItemsStorageView ItemsStorageView { get; set; }
@@ -21,7 +24,7 @@ namespace StorageSort
             //Mono doesn't like null forgiving operators
             if (screen == null || !screen.isActiveAndEnabled) return;
 
-            if (Input.GetKeyDown(Plugin.Config.SortKey))
+            if (Plugin.Config.IsRaidSortPressed())
             {
                 SortItems(storage);
             }

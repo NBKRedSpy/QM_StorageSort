@@ -7,8 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace StorageSort
+namespace StorageSort.Patches
 {
+    /// <summary>
+    /// Adds a hotkey to sort the ship cargo inventory.
+    /// </summary>
     [HarmonyPatch(typeof(ScreenWithShipCargo), nameof(ScreenWithShipCargo.Update))]
     public static class ScreenWithShipCargo_Update_Patch
     {

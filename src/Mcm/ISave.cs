@@ -1,4 +1,4 @@
-﻿namespace RedsOptionalTweaks.Mcm
+﻿namespace StorageSort.Mcm
 {
     internal interface ISave
     {

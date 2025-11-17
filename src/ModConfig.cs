@@ -7,74 +7,53 @@ using System.Threading.Tasks;
 using MGSC;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using StorageSort.Mcm;
 using UnityEngine;
 
 namespace StorageSort
 {
-    public class ModConfig
+    public class ModConfig : PersistentConfig<ModConfig>
     {
-        [JsonConverter(typeof(StringEnumConverter))]    
-        public KeyCode SortKey = KeyCode.S;
-        
-        [JsonConverter(typeof(StringEnumConverter))]
-        public KeyCode DropKey = KeyCode.D;
-
-        [JsonIgnore]
-        private static JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
+        public ModConfig() { }
+        public ModConfig(string configPath) : base(configPath)
         {
-            Formatting = Formatting.Indented,
-        };
-
-
-        public static ModConfig LoadConfig(string configPath)
-        {
-            ModConfig config;
-
-
-            if (File.Exists(configPath))
-            {
-                try
-                {
-                    string sourceJson = File.ReadAllText(configPath);
-
-                    config = JsonConvert.DeserializeObject<ModConfig>(sourceJson, SerializerSettings);
-
-                    //Add any new elements that have been added since the last mod version the user had.
-                    string upgradeConfig = JsonConvert.SerializeObject(config, SerializerSettings);
-
-                    if (upgradeConfig != sourceJson)
-                    {
-                        Plugin.Logger.Log("Updating config with missing elements");
-                        //re-write
-                        File.WriteAllText(configPath, upgradeConfig);
-                    }
-
-
-                    return config;
-                }
-                catch (Exception ex)
-                {
-                    Plugin.Logger.LogError(ex, "Error parsing configuration.  Ignoring config file and using defaults");
-
-                    //Not overwriting in case the user just made a typo.
-                    config = new ModConfig();
-                    return config;
-                }
-            }
-            else
-            {
-                config = new ModConfig();
-                config.Save();                
-                return config;
-            }
         }
 
-        public void Save()
+        public KeyCode SortKey { get; set; } = KeyCode.S;
+
+        /// <summary>
+        /// Hold this key while pressing the SortKey to sort the backpack when in a raid.
+        /// Set to Keycode.None to disable. 
+        /// </summary>
+        public KeyCode BackpackSortModifierKey { get; set; } = KeyCode.LeftShift;
+
+        public KeyCode SpaceSortKey { get; set; } = KeyCode.S;
+
+        public KeyCode DropKey { get; set; } = KeyCode.D;
+
+
+        /// <summary>
+        /// True if the backpack sort key combination is pressed, and not disabled.
+        /// </summary>
+        /// <returns></returns>
+        public bool IsBackpackSortPressed()
         {
-            string json = JsonConvert.SerializeObject(this, SerializerSettings);
-            File.WriteAllText(Plugin.ConfigDirectories.ConfigPath, json);
+            if(BackpackSortModifierKey == KeyCode.None)
+            {
+                return false;
+            }
+
+            return Input.GetKeyDown(SortKey) && Input.GetKey(BackpackSortModifierKey);
         }
 
-
+        /// <summary>
+        /// Returns true if the raid sort key is pressed (and not the backpack sort).
+        /// </summary>
+        /// <returns></returns>
+        public bool IsRaidSortPressed()
+        {
+            return !IsBackpackSortPressed() && Input.GetKeyDown(SortKey);
+            
+        }   
     }
 }

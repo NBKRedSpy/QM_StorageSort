@@ -7,16 +7,21 @@ For users that are running the opt in beta, please see the documentation [url=ht
 
 [h1]Docs[/h1]
 
-Sorts or drops all items in a container.
-By default S sorts and D drops all items.
-Adds the context menu command "Drop One".
+Features:
+[list]
+[*]Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.
+[*]Adds the ability to sort the merc's backpack when in a raid.  Defaults to Shift+S.
+[*]Adds a Drop All hotkey to containers.  Defaults to D.
+[*]Adds the context menu command "Drop One".
+[/list]
+
+Each feature can be disabled in the configuration by setting the key to None.
 
 The drop key is useful when dropping gas from barrels in one keystroke.
+
 The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.
 
-See the Configuration section below to change hot keys.
-
-Both hotkeys can be configured.  See the Configuration section below.
+The keys can be configured using the Mods button on the main screen or directly in the config file.
 
 [h1]"Drop One" and Context Menu Hotkeys Mod[/h1]
 
@@ -50,7 +55,23 @@ The configuration file will be created on the first game run and can be found at
 [/td]
 [td]S
 [/td]
-[td]The key that sorts the current storage inventory
+[td]The key that sorts the current storage inventory when in a raid.
+[/td]
+[/tr]
+[tr]
+[td]BackpackSortModifierKey
+[/td]
+[td]Shift
+[/td]
+[td]The key to hold down while pressing the 'Sort Key' to sort the player's backpack instead of a container. Set to None to disable backpack sort. This currently only works when in a raid.
+[/td]
+[/tr]
+[tr]
+[td]SpaceSortKey
+[/td]
+[td]S
+[/td]
+[td]The key that sorts the current storage inventory when in space.
 [/td]
 [/tr]
 [tr]
@@ -103,6 +124,11 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 [list]
 [*]0.9.7+ Only
 [*]Fix for sort key invoking when not focused.
+[/list]
+
+[h2]3.0.0[/h2]
+[list]
+[*]Added space cargo screen sort.  This functionality was previously available via the Sort To Tabs mod; However, the game now has a cargo distribution ability and that mod has been decommissioned.
 [/list]
 
 [h2]2.4.1[/h2]

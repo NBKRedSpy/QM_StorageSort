@@ -9,7 +9,7 @@ using HarmonyLib;
 using MGSC;
 using UnityEngine;
 
-namespace StorageSort.DropOne
+namespace StorageSort.Patches.DropOne
 {
 
     /// <summary>
@@ -74,7 +74,7 @@ namespace StorageSort.DropOne
                 return;
             }
 
-            UI.Get<CommonContextMenu>().SetupCommand("Drop One", (int)DropOneCommand);
+            UI.Get<CommonContextMenu>().SetupCommand("Drop One", DropOneCommand);
         }
     }
 

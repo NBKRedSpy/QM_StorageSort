@@ -1,31 +1,34 @@
 ﻿using HarmonyLib;
 using MGSC;
-using ModConfigMenu;
+using ModConfigMenu.Contracts;
+using ModConfigMenu.Implementations;
 using ModConfigMenu.Objects;
+using StorageSort;
 using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml;
-using UnityEngine;
 
 namespace StorageSort.Mcm
 {
-    /// <summary>
-    /// </summary>
-    /// <remarks>This is a prototype.  It has too many direct use external requirements.</remarks>
-    /// <param name="config"></param>
-    internal abstract class McmConfigurationBase(ModConfig config)
+
+    internal abstract class McmConfigurationBase(ISave config)
     {
 
-        public ModConfig Config { get; set; } = config;
+        //For internal version tracking.  For compatibility this class is copied between mods to avoid needing to update all mods when a change is made.
+        //********************* CHANGE THE VERSION IF YOU MAKE CHANGES TO THIS FILE *********************
+        //private static string Version = "1.0";
+
+        protected const string WarningColorElement = "<color=#FBE343>";
+        /// <summary>
+        /// The common warning about the number keys being prefixed with Alpha.
+        /// </summary>
+        protected const string KeyCodeAlphaNote = $"{WarningColorElement}Note: The keys 1 through 0 are named Alpha1 through Alpha0.</color>";
+
+        public ISave Config { get; set; } = config;
 
         /// <summary>
         /// Used to set the defaults established by the ModConfig class.
@@ -59,19 +62,52 @@ namespace StorageSort.Mcm
             return false;
         }
 
-        
+
         /// <summary>
         /// The ModConfig specific configuration.  Use the Create* and OnSave helper functions.
         /// </summary>
         public abstract void Configure();
 
 
-        protected ConfigValue CreateRestartMessage()
+        /// <summary>
+        /// Creates a dropdown config for an enum type.
+        /// </summary>
+        /// <typeparam name="T">The object type to extract the data from</typeparam>
+        /// <typeparam name="TEnum">The target enum.</typeparam>
+        /// <param name="propertyName">The name of the property to use for the value.</param>
+        /// <param name="tooltip"></param>
+        /// <param name="label"></param>
+        /// <param name="header"></param>
+        /// <returns></returns>
+        internal IConfigValue CreateEnumDropdown<TEnum>(string propertyName, string tooltip, string label, string header = "General", bool sort = false)
+            where TEnum : Enum
         {
-            return new ConfigValue("__Restart", "The game must be restarted for any changes to take effect.", "Restart");
 
+            object defaultValue = AccessTools.Property(typeof(ModConfig), propertyName).GetValue(Defaults);
+            object propertyValue = AccessTools.Property(typeof(ModConfig), propertyName).GetValue(Config);
+
+            List<object> enumNames;
+
+            if (sort)
+            {
+                enumNames = Enum.GetNames(typeof(TEnum)).OrderBy(x => x).ToList<object>();
+            }
+            else
+            {
+                enumNames = Enum.GetNames(typeof(TEnum)).ToList<object>();
+            }
+
+            var dropDown = new DropdownConfig(propertyName, propertyValue.ToString(), header, defaultValue.ToString(),
+                 tooltip, label, enumNames);
+
+            return dropDown;
         }
 
+        protected ConfigValue CreateRestartMessage()
+        {
+            return new ConfigValue("__Restart", "<color=#FF0000>The game must be restarted for any changes to take effect.", "Restart");
+
+        }
         /// <summary>
         /// Creates a setting that is only available in the config file due to lack of MCM support.
         /// Creates a unique ID for the key to avoid the Save from picking it up.
@@ -81,13 +117,11 @@ namespace StorageSort.Mcm
         /// <returns></returns>
         protected ConfigValue CreateReadOnly(string propertyName, string header = "Only available in config file")
         {
-            int key = UniqueId++;
-
-
+            int key = UniqueId++;  //Used to make the keys unique so they do not match a property.
 
             object value = AccessTools.Property(typeof(ModConfig), propertyName)?.GetValue(Config);
 
-            if(value == null)
+            if (value == null)
             {
                 //Try field
                 value = AccessTools.Field(typeof(ModConfig), propertyName)?.GetValue(Config);
@@ -117,7 +151,7 @@ namespace StorageSort.Mcm
 
             string formattedPropertyName = FormatUpperCaseSpaces(propertyName);
 
-            return new ConfigValue(key.ToString(), $@"{formattedPropertyName}: <color=#FFFEC1>{formattedValue}</color>", header);
+            return new ConfigValue(key.ToString(), $@"{formattedPropertyName}: {WarningColorElement}{formattedValue}</color>", header);
 
         }
 
@@ -136,7 +170,7 @@ namespace StorageSort.Mcm
         }
 
         protected ConfigValue CreateConfigProperty<T>(string propertyName,
-            string tooltip, string label, T min, T max, string header = "General") where T: struct
+            string tooltip, string label, T min, T max, string header = "General") where T : struct
         {
             T defaultValue = (T)AccessTools.Property(typeof(ModConfig), propertyName).GetValue(Defaults);
             T propertyValue = (T)AccessTools.Property(typeof(ModConfig), propertyName).GetValue(Config);
@@ -145,7 +179,7 @@ namespace StorageSort.Mcm
             {
                 case Type floatType when floatType == typeof(float):
 
-                    return new ConfigValue(propertyName, propertyValue, header, defaultValue, 
+                    return new ConfigValue(propertyName, propertyValue, header, defaultValue,
                         tooltip, label, Convert.ToSingle(min), Convert.ToSingle(max));
                 case Type intType when intType == typeof(int):
                     return new ConfigValue(propertyName, propertyValue, header, defaultValue,
@@ -154,6 +188,7 @@ namespace StorageSort.Mcm
                     throw new ApplicationException($"Unexpected numeric type '{typeof(T).Name}'");
             }
         }
+
 
         /// <summary>
         /// Creates a configuration value.
@@ -184,31 +219,46 @@ namespace StorageSort.Mcm
         {
             MethodInfo propertyMethod = AccessTools.Property(typeof(ModConfig), key)?.GetSetMethod();
 
+            Action<object> setMethod = null;   //The action to set the property or field's value.
+
+
+            Type propertyType = null;
 
             //Try property
             if (propertyMethod != null)
             {
-                propertyMethod.Invoke(Config, new object[] { value });
-                return true;
+                setMethod = (value) => propertyMethod.Invoke(Config, new object[] { value });
+                propertyType = propertyMethod.GetParameters()[0].ParameterType;
             }
-
-            //Try field.
-            if (propertyMethod == null)
+            //Try field
+            else
             {
-                //Try field
-
-                var field = AccessTools.Field(typeof(ModConfig), key);
-                if(field == null)
+                FieldInfo field = AccessTools.Field(typeof(ModConfig), key);
+                if (field == null)
                 {
                     return false;
-
                 }
 
-                field.SetValue(Config, value);
-                return true;
+                setMethod = (value) => { field.SetValue(Config, value); };
+                propertyType = field.FieldType;
             }
 
-            return false;
+
+            if (propertyType.IsEnum)
+            {
+                //Convert from string to enum
+                object enumValue = Enum.Parse(propertyType, value.ToString());
+                setMethod(enumValue);
+            }
+            else
+            {
+                //todo: I don't think this is required
+                ////Change type if needed
+                //object convertedValue = Convert.ChangeType(value, propertyType);
+                setMethod(value);
+            }
+
+            return true;
         }
 
         protected virtual bool OnSave(Dictionary<string, object> currentConfig, out string feedbackMessage)

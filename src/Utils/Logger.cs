@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace StorageSort
+namespace StorageSort.Utils
 {
     /// <summary>
     /// A Unity Debug Logger that includes the assembly name.
@@ -46,9 +46,17 @@ namespace StorageSort
         {
             Debug.LogError($"[{LogPrefix}] {message}");
         }
+
         public void LogError(Exception ex, string message)
         {
-            Debug.LogError($"[{LogPrefix}] {message}:");
+            Debug.LogError($"[{LogPrefix}] {message}");
+            LogError(ex);
+        }
+
+
+        public void LogError(Exception ex)
+        {
+            Debug.LogError($"[{LogPrefix}] Exception Logged:");
             Debug.LogException(ex);
         }
     }

@@ -36,15 +36,19 @@ namespace StorageSort.Patches.DropOne
                 // always drops it on the ground.
 
                 //Split to one item and drop it.
-                BasePickupItem basePickupItem = SingletonMonoBehaviour<ItemFactory>.Instance.CreateForInventory(item.Id);
+                BasePickupItem newSingleItem = SingletonMonoBehaviour<ItemFactory>.Instance.CreateForInventory(item.Id);
                 item.StackCount -= 1;
-                basePickupItem.StackCount = 1;
-                basePickupItem.ExaminedItem = false;
-                basePickupItem.CopyExpireTime(item);
-                ItemInteractionSystem.TrySplitUsable(item, basePickupItem);
+                newSingleItem.StackCount = 1;
+                newSingleItem.ExaminedItem = false;
+                newSingleItem.CopyExpireTime(item);
+                ItemInteractionSystem.TrySplitUsable(item, newSingleItem);
 
-                __instance._itemsOnFloor.GetOrCreate(__instance._creatures.Player.CreatureData.Position).Storage
-                    .TryPutItem(basePickupItem, CellPosition.Zero);
+
+                //WARNING - COPY: drop logic from: MGSC.InventoryScreen.ContextMenuOnCmdSelected(int)
+                //  case 0:  (which is the ContextMenuCommand.Drop command)
+                __instance.DragControllerDropOutsideCallback(newSingleItem);
+                __instance.DragControllerInteractionCallback(InventoryInteractionType.DropOutside);
+                __instance.DragControllerRefreshCallback();
 
                 __instance.RefreshItemsList();
             }

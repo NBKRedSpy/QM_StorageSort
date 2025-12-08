@@ -21,11 +21,12 @@ namespace StorageSort
 
         public KeyCode SortKey { get; set; } = KeyCode.S;
 
+
         /// <summary>
         /// Hold this key while pressing the SortKey to sort the backpack when in a raid.
-        /// Set to Keycode.None to disable. 
+        /// Set to Keycode.None to use the Sortkey alone.
         /// </summary>
-        public KeyCode BackpackSortModifierKey { get; set; } = KeyCode.LeftShift;
+        public KeyCode BackpackSortModifierKey { get; set; } = KeyCode.None;
 
         public KeyCode SpaceSortKey { get; set; } = KeyCode.S;
 
@@ -38,12 +39,8 @@ namespace StorageSort
         /// <returns></returns>
         public bool IsBackpackSortPressed()
         {
-            if(BackpackSortModifierKey == KeyCode.None)
-            {
-                return false;
-            }
-
-            return Input.GetKeyDown(SortKey) && Input.GetKey(BackpackSortModifierKey);
+            return Input.GetKeyDown(SortKey) && (BackpackSortModifierKey == KeyCode.None ||
+                Input.GetKey(BackpackSortModifierKey));
         }
 
         /// <summary>

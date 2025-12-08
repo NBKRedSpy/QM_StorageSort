@@ -60,6 +60,10 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 3.4.0 
+* Added "drop all" to corpse items.
+* Changed player backpack sort to not require modifier key by default.
+
 ## 3.3.0 
 * Fixed Drop One command not using an AP like what the game's Drop command does.
 

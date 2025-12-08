@@ -1,10 +1,6 @@
 [h1]Storage Sort, Drop, and Single Drop[/h1]
 
 
-[h1]Important Notes for Opt In Beta[/h1]
-
-For users that are running the opt in beta, please see the documentation [url=https://github.com/NBKRedSpy/QM_StorageSort/blob/beta/README.md]here[/url] instead.
-
 [h1]Docs[/h1]
 
 Features:
@@ -106,6 +102,17 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 
 [h1]Change Log[/h1]
 
+[h2]3.4.0[/h2]
+[list]
+[*]Added "drop all" to corpse items.
+[*]Changed player backpack sort to not require modifier key by default.
+[/list]
+
+[h2]3.3.0[/h2]
+[list]
+[*]Fixed Drop One command not using an AP like what the game's Drop command does.
+[/list]
+
 [h2]3.2.0[/h2]
 [list]
 [*]0.9.7+ Only
@@ -129,35 +136,4 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 [h2]3.0.0[/h2]
 [list]
 [*]Added space cargo screen sort.  This functionality was previously available via the Sort To Tabs mod; However, the game now has a cargo distribution ability and that mod has been decommissioned.
-[/list]
-
-[h2]2.4.1[/h2]
-[list]
-[*]Multi version support.
-[/list]
-
-[h2]2.4.0[/h2]
-[list]
-[*]Drop All now always closes screen.  Useful for muscle memory when opening a barrel and not realizing it was empty.
-[/list]
-
-[h2]2.3.0[/h2]
-[list]
-[*]MCM integration.
-[/list]
-
-[h2]2.1.0[/h2]
-[list]
-[*]Added "Drop One" command.
-[/list]
-
-[h2]2.0.1[/h2]
-[list]
-[*]Fixed mod config using key codes instead of the string version.
-[*]Thanks goes to Steam user Traveler for reporting this issue.
-[/list]
-
-[h2]2.0.0[/h2]
-[list]
-[*]Added Drop All key.
 [/list]

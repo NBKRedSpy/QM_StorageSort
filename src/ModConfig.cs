@@ -39,8 +39,8 @@ namespace StorageSort
         /// <returns></returns>
         public bool IsBackpackSortPressed()
         {
-            return Input.GetKeyDown(SortKey) && (BackpackSortModifierKey == KeyCode.None ||
-                Input.GetKey(BackpackSortModifierKey));
+            return InputHelper.GetKeyDown(SortKey) && (BackpackSortModifierKey == KeyCode.None ||
+                InputHelper.GetKey(BackpackSortModifierKey));
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace StorageSort
         {
             //Don't sort the storage if the user has the "sort modifier" set.
             //  This allows the player's backpack and storage to be sorted independently.
-            return (BackpackSortModifierKey == KeyCode.None || !IsBackpackSortPressed()) && Input.GetKeyDown(SortKey);
+            return (BackpackSortModifierKey == KeyCode.None || !IsBackpackSortPressed()) && InputHelper.GetKeyDown(SortKey);
         }   
     }
 }

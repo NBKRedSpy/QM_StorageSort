@@ -22,7 +22,7 @@ namespace StorageSort.Patches.BackpackSort
         {
             try
             {
-                if (!Input.GetKey(Plugin.Config.DropKey)) return;
+                if (!InputHelper.GetKey(Plugin.Config.DropKey)) return;
 
                 List<BasePickupItem> items =
                     UI.Get<CorpseInspectWindow>().CorpseStorage.CreatureData.Inventory.AllContainers

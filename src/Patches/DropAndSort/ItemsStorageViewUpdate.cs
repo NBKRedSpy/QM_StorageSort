@@ -29,7 +29,7 @@ namespace StorageSort.Patches.DropAndSort
             {
                 SortItems(storage);
             }
-            else if (Input.GetKeyDown(Plugin.Config.DropKey))
+            else if (InputHelper.GetKeyDown(Plugin.Config.DropKey))
             {
 
                 DropAllItems(storage.Items);

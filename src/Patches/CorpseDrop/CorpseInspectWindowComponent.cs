@@ -1,8 +1,10 @@
 ﻿using MGSC;
+using StorageSort.Patches.DropAndSort;
 using StorageSort.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -22,24 +24,19 @@ namespace StorageSort.Patches.BackpackSort
             {
                 if (!Input.GetKey(Plugin.Config.DropKey)) return;
 
-                DropAllItems();
+                List<BasePickupItem> items =
+                    UI.Get<CorpseInspectWindow>().CorpseStorage.CreatureData.Inventory.AllContainers
+                        .SelectMany(x => x.Items).ToList();
+
+                ItemsStorageViewUpdate.DropAllItems(items);
 
             }
             catch (Exception ex)
             {
-
                 Plugin.Logger.LogError(ex);
             }
 
         }
 
-        private void DropAllItems()
-        {
-            UI.Get<InventoryScreen>().TakeAllFromCorpse();
-
-            //COPY WARNING: InventoryScreen.TakeAllFromCorpse().
-            //  This is a copy of the drop logic from that function, minus the inventory add logic.
-
-        }
     }
 }

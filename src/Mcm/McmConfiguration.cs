@@ -22,7 +22,7 @@ namespace StorageSort.Mcm
                 new ConfigValue("__ContextNote", 
                     """
                     The 'Drop One' context menu command can be mapped in the 'Hotkeys for Context Menus'
-                    mod using 620000 for the Command.  Ex: \"Command\": 620000"
+                    mod using 620000 for the Command.  Ex: "Command": 620000"
                     """, "Note")
             }, OnSave);
         }

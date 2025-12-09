@@ -1,4 +1,5 @@
 ﻿using MGSC;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -28,23 +29,34 @@ namespace StorageSort.Patches.DropAndSort
             {
                 SortItems(storage);
             }
-            else if (Input.GetKeyDown(Plugin.Config.DropKey))
+            else if (InputHelper.GetKeyDown(Plugin.Config.DropKey))
             {
 
-                for (int i = storage.Items.Count - 1; i >= 0; i--)
-                {
-                    BasePickupItem item = storage.Items[i];
-
-                    screen.DragControllerDropOutsideCallback(item);
-                    screen.DragControllerInteractionCallback(InventoryInteractionType.DropOutside);
-                    screen.DragControllerRefreshCallback();
-
-                }
+                DropAllItems(storage.Items);
 
                 //Sort the results.
                 SortItems(storage);
 
                 screen.Hide();
+            }
+        }
+
+        /// <summary>
+        /// Drops all of the items from the specified storage.
+        /// </summary>
+        /// <param name="storage"></param>
+        public static void DropAllItems(List<BasePickupItem> items)
+        {
+            InventoryScreen screen = UI.Get<InventoryScreen>();
+
+            for (int i = items.Count - 1; i >= 0; i--)
+            {
+                BasePickupItem item = items[i];
+
+                screen.DragControllerDropOutsideCallback(item);
+                screen.DragControllerInteractionCallback(InventoryInteractionType.DropOutside);
+                screen.DragControllerRefreshCallback();
+
             }
         }
 

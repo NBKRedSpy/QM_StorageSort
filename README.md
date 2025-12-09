@@ -7,12 +7,12 @@
 Features:
 * Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.  
 * Adds the ability to sort the merc's backpack when in a raid.  Defaults to Shift+S.
-* Adds a Drop All hotkey to containers.  Defaults to D.
+* Adds a Drop All hotkey to containers and corpses.  Defaults to D.
 * Adds the context menu command "Drop One".
 
 Each feature can be disabled in the configuration by setting the key to None.
 
-The drop key is useful when dropping gas from barrels in one keystroke.
+The drop all key is useful when dropping gas from barrels in one keystroke.
 
 The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.
 
@@ -40,7 +40,7 @@ The configuration file will be created on the first game run and can be found at
 |Name|Default|Description|
 |--|--|--|
 |SortKey|S|The key that sorts the current storage inventory when in a raid.|
-|BackpackSortModifierKey|Shift|The key to hold down while pressing the 'Sort Key' to sort the player's backpack instead of a container. Set to None to disable backpack sort. This currently only works when in a raid.|
+|BackpackSortModifierKey|None|The key to hold down while pressing the 'Sort Key' to sort the player's backpack instead of a container. Set to None to not require a modifier key. This currently only works when in a raid.|
 |SpaceSortKey|S|The key that sorts the current storage inventory when in space.|
 |DropKey|D|Drops all items in a container.|
 
@@ -60,6 +60,11 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 3.4.0 
+* Added "drop all" to corpse items.
+* Changed player backpack sort to not require modifier key by default.
+* Fix for keys conflicting with open context menu.
+
 ## 3.3.0 
 * Fixed Drop One command not using an AP like what the game's Drop command does.
 

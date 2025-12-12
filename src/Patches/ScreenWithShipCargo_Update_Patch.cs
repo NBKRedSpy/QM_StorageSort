@@ -17,10 +17,20 @@ namespace StorageSort.Patches
     {
         public static void Prefix(ScreenWithShipCargo __instance)
         {
-            if (__instance.isActiveAndEnabled && InputHelper.GetKeyDown(Plugin.Config.SpaceSortKey))
-            {
-                __instance.SortArsenalButtonOnClick(null, 1);
-            }
+            if (!InputHelper.GetKeyDown(Plugin.Config.SpaceSortKey)) return;
+
+            //-- Inventory sort button.
+            __instance.SortArsenalButtonOnClick(null, 1);
+
+            //-- Backpack sort
+            ArsenalScreen arsenalScreen = __instance as ArsenalScreen;
+
+            if (arsenalScreen == null || arsenalScreen._merc == null) return;
+
+            arsenalScreen._merc.CreatureData.Inventory.BackpackStore.
+                SortWithExpandByTypeAndName(Bootstrap._state.Get<SpaceTime>());
+
+            arsenalScreen.RefreshView();
         }
     }
 }

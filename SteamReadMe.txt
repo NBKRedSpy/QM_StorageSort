@@ -5,8 +5,7 @@
 
 Features:
 [list]
-[*]Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.
-[*]Adds the ability to sort the merc's backpack when in a raid.  Defaults to Shift+S.
+[*]Adds sort the many of the inventory screens in raid and in space.  Defaults to S.
 [*]Adds a Drop All hotkey to containers and corpses.  Defaults to D.
 [*]Adds the context menu command "Drop One".
 [/list]
@@ -101,6 +100,11 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 [/list]
 
 [h1]Change Log[/h1]
+
+[h2]3.5.0[/h2]
+[list]
+[*]Added backpack sort when in space.
+[/list]
 
 [h2]3.4.0[/h2]
 [list]

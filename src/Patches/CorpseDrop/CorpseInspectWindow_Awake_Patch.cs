@@ -19,7 +19,14 @@ namespace StorageSort.Patches.DropAndSort
     {
         public static void Postfix(CorpseInspectWindow  __instance)
         {
-            CorpseInspectWindowComponent.CreateComponent<CorpseInspectWindowComponent>(__instance);
+            try
+            {
+                CorpseInspectWindowComponent.CreateComponent<CorpseInspectWindowComponent>(__instance);
+            }
+            catch (Exception ex)
+            {
+                Plugin.Logger.LogError(ex);
+            }
         }   
     }
 }

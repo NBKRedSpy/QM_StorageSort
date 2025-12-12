@@ -1,4 +1,5 @@
 ﻿using MGSC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,30 +15,37 @@ namespace StorageSort.Patches.DropAndSort
 
         public void Update()
         {
-            ItemStorage storage = ItemsStorageView?.Storage;
-
-            if (!Input.anyKeyDown) return;
-
-            InventoryScreen screen;
-
-            screen = UI.GetActiveViews().OfType<InventoryScreen>().FirstOrDefault();
-
-            //Mono doesn't like null forgiving operators
-            if (screen == null || !screen.isActiveAndEnabled) return;
-
-            if (Plugin.Config.IsRaidSortPressed())
+            try
             {
-                SortItems(storage);
+                ItemStorage storage = ItemsStorageView?.Storage;
+
+                if (!Input.anyKeyDown) return;
+
+                InventoryScreen screen;
+
+                screen = UI.GetActiveViews().OfType<InventoryScreen>().FirstOrDefault();
+
+                //Mono doesn't like null forgiving operators
+                if (screen == null || !screen.isActiveAndEnabled) return;
+
+                if (Plugin.Config.IsRaidSortPressed())
+                {
+                    SortItems(storage);
+                }
+                else if (InputHelper.GetKeyDown(Plugin.Config.DropKey))
+                {
+
+                    DropAllItems(storage.Items);
+
+                    //Sort the results.
+                    SortItems(storage);
+
+                    screen.Hide();
+                }
             }
-            else if (InputHelper.GetKeyDown(Plugin.Config.DropKey))
+            catch (Exception ex)
             {
-
-                DropAllItems(storage.Items);
-
-                //Sort the results.
-                SortItems(storage);
-
-                screen.Hide();
+                Plugin.Logger.LogError(ex);
             }
         }
 

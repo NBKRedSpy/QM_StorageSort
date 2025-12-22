@@ -26,6 +26,9 @@
 		<Assembly-CSharpPath Condition="Exists('lib-stripped\Assembly-CSharp-publicized.dll')">lib-stripped/Assembly-CSharp-publicized.dll</Assembly-CSharpPath>
 		<Assembly-CSharpPath Condition="!Exists('lib-stripped\Assembly-CSharp-publicized.dll')">$(ManagedPath)Assembly-CSharp.dll</Assembly-CSharpPath>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Include="Properties\AssemblyInfo.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Reference Include="MCM">

@@ -25,7 +25,10 @@ namespace StorageSort.Patches
             //-- Backpack sort
             ArsenalScreen arsenalScreen = __instance as ArsenalScreen;
 
-            if (arsenalScreen == null || arsenalScreen._merc == null) return;
+            //Debug, extra null checks for merc.  Trying to track down a rare NRE.
+            if (arsenalScreen == null || arsenalScreen._merc == null
+                || arsenalScreen._merc?.CreatureData?.Inventory?.BackpackStore == null
+                ) return;
 
             arsenalScreen._merc.CreatureData.Inventory.BackpackStore.
                 SortWithExpandByTypeAndName(Bootstrap._state.Get<SpaceTime>());

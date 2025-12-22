@@ -59,6 +59,9 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 3.5.1  
+* Fix for loadout screen sometimes losing inventory in the backpack.  Extra checking to ensure the backpack is not sorted when on the loadout screen.
+
 ## 3.5.0
 * Added backpack sort when in space.
 

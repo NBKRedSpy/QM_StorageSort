@@ -19,6 +19,7 @@ namespace StorageSort.Patches
         {
             if (!InputHelper.GetKeyDown(Plugin.Config.SpaceSortKey)) return;
 
+
             //-- Inventory sort button.
             __instance.SortArsenalButtonOnClick(null, 1);
 
@@ -26,9 +27,15 @@ namespace StorageSort.Patches
             ArsenalScreen arsenalScreen = __instance as ArsenalScreen;
 
             //Debug, extra null checks for merc.  Trying to track down a rare NRE.
-            if (arsenalScreen == null || arsenalScreen._merc == null
-                || arsenalScreen._merc?.CreatureData?.Inventory?.BackpackStore == null
-                ) return;
+            // The shuttle Cargo View check shouldn't be necessary, but just in case.
+            //  The view should already be active.  
+            //  My guess is that the backpack not being visible is the issue...
+
+            if ( arsenalScreen._shuttleCargoStorageView?.isActiveAndEnabled == true
+                || arsenalScreen._merc?.CreatureData?.Inventory?.BackpackStore == null)
+            {
+                return;
+            }
 
             arsenalScreen._merc.CreatureData.Inventory.BackpackStore.
                 SortWithExpandByTypeAndName(Bootstrap._state.Get<SpaceTime>());

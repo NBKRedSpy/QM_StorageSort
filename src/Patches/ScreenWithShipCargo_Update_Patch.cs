@@ -26,6 +26,9 @@ namespace StorageSort.Patches
             //-- Backpack sort
             ArsenalScreen arsenalScreen = __instance as ArsenalScreen;
 
+            if (arsenalScreen == null) return;
+
+
             //Debug, extra null checks for merc.  Trying to track down a rare NRE.
             // The shuttle Cargo View check shouldn't be necessary, but just in case.
             //  The view should already be active.  

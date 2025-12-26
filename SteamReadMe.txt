@@ -101,6 +101,11 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 
 [h1]Change Log[/h1]
 
+[h2]3.5.2[/h2]
+[list]
+[*]Fix for after raid throwing exception due to Arsenal Screen check.  Did not affect game otherwise.
+[/list]
+
 [h2]3.5.1[/h2]
 [list]
 [*]Fix for loadout screen sometimes losing inventory in the backpack.  Extra checking to ensure the backpack is not sorted when on the loadout screen.

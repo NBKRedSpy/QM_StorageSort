@@ -60,6 +60,9 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 3.2.1
+* Unstable beta compatibility.
+
 ## 3.2.0
 * 0.9.7+ Only
 * Added ability to sort the player's backpack when in raid.

@@ -5,13 +5,14 @@
 # Docs
 
 Features:
-* Adds sort the many of the inventory screens in raid and in space.  Defaults to S.
-* Adds a Drop All hotkey to containers and corpses.  Defaults to D.
+* Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.  
+* Adds the ability to sort the merc's backpack when in a raid.  Defaults to Shift+S.
+* Adds a Drop All hotkey to containers.  Defaults to D.
 * Adds the context menu command "Drop One".
 
 Each feature can be disabled in the configuration by setting the key to None.
 
-The drop all key is useful when dropping gas from barrels in one keystroke.
+The drop key is useful when dropping gas from barrels in one keystroke.
 
 The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.
 
@@ -39,7 +40,7 @@ The configuration file will be created on the first game run and can be found at
 |Name|Default|Description|
 |--|--|--|
 |SortKey|S|The key that sorts the current storage inventory when in a raid.|
-|BackpackSortModifierKey|None|The key to hold down while pressing the 'Sort Key' to sort the player's backpack instead of a container. Set to None to not require a modifier key. This currently only works when in a raid.|
+|BackpackSortModifierKey|Shift|The key to hold down while pressing the 'Sort Key' to sort the player's backpack instead of a container. Set to None to disable backpack sort. This currently only works when in a raid.|
 |SpaceSortKey|S|The key that sorts the current storage inventory when in space.|
 |DropKey|D|Drops all items in a container.|
 
@@ -59,22 +60,8 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
-## 3.5.2
-* Fix for after raid throwing exception due to Arsenal Screen check.  Did not affect game otherwise.
-
-## 3.5.1  
-* Fix for loadout screen sometimes losing inventory in the backpack.  Extra checking to ensure the backpack is not sorted when on the loadout screen.
-
-## 3.5.0
-* Added backpack sort when in space.
-
-## 3.4.0 
-* Added "drop all" to corpse items.
-* Changed player backpack sort to not require modifier key by default.
-* Fix for keys conflicting with open context menu.
-
-## 3.3.0 
-* Fixed Drop One command not using an AP like what the game's Drop command does.
+## 3.2.1
+* Unstable beta compatibility.
 
 ## 3.2.0
 * 0.9.7+ Only
@@ -92,3 +79,22 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 
 ## 3.0.0
 * Added space cargo screen sort.  This functionality was previously available via the Sort To Tabs mod; However, the game now has a cargo distribution ability and that mod has been decommissioned.
+
+## 2.4.1
+* Multi version support.
+
+## 2.4.0
+* Drop All now always closes screen.  Useful for muscle memory when opening a barrel and not realizing it was empty.
+
+## 2.3.0
+* MCM integration.
+
+## 2.1.0
+* Added "Drop One" command.
+
+## 2.0.1 
+* Fixed mod config using key codes instead of the string version.
+* Thanks goes to Steam user Traveler for reporting this issue.
+
+## 2.0.0
+* Added Drop All key.

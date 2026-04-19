@@ -102,6 +102,11 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 
 [h1]Change Log[/h1]
 
+[h2]3.2.1[/h2]
+[list]
+[*]Unstable beta compatibility.
+[/list]
+
 [h2]3.2.0[/h2]
 [list]
 [*]0.9.7+ Only

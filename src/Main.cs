@@ -27,36 +27,17 @@ namespace StorageSort_Bootstrap
             try
             {
 
-                string modPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-                BetaConfig config = JsonConvert.DeserializeObject<BetaConfig>(File.ReadAllText(Path.Combine(modPath, "version-info.json")));
-
-                bool isBeta = GetNumericVersion(Application.version) >= GetNumericVersion(config.BetaVersion);
-
-                if (isBeta)
-                {
-                    Log.LogWarning("Beta version detected.");
-                    if (config.DisableBeta)
-                    {
-                        Log.LogError("Beta version is disabled.  Mod is disabled.");
-                        return;
-                    }
-                }
-                else
-                {
-                    if (config.DisableStable)
-                    {
-                        Log.LogError("Stable version is disabled.  Mod is disabled.");
-                        return;
-                    }
-                }
-
-
                 string modDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+                bool isBeta;
+                if (VersionCheck.DisableModCheck(modDir, out isBeta)) return;
+
                 Assembly modAssembly = Assembly.LoadFile(Path.Combine(modDir, isBeta ? "beta" : "stable", "StorageSort.dll"));
 
                 //Using reflection to prevent cyclic dependency
-                Type bootstrapModType = modAssembly.GetTypes().Where(x => x.IsSubclassOf(typeof(BootstrapMod))).FirstOrDefault();
+                Type bootstrapModType = modAssembly.GetTypes()
+                    .Where(x => x.IsSubclassOf(typeof(BootstrapMod)))
+                    .FirstOrDefault();
 
                 if (bootstrapModType == null)
                 {
@@ -81,22 +62,5 @@ namespace StorageSort_Bootstrap
         
         [Hook(ModHookType.DungeonFinished)]
         public static void DungeonFinishedCallback(IModContext context) => HookEvents?.DungeonFinished?.Invoke(context);
-
-        private static Version GetNumericVersion(string versionString)
-        {
-            // Only take the numeric parts as build and store version are store specific.
-
-            List<string> numericParts =
-                versionString.Split('.')
-                .TakeWhile(x => Regex.IsMatch(x, @"^\d+$"))
-                .ToList();
-
-            // Pad with zeros if less than 2 parts (Version requires at least major, minor)
-            while (numericParts.Count < 2) numericParts.Add("0");
-
-            string numericVersion = string.Join(".", numericParts.Take(4).ToArray()); // Version supports up to 4 parts
-
-            return new Version(numericVersion);
-        }
     }
 }

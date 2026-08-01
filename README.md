@@ -10,6 +10,8 @@ Features:
 * Adds a Drop All hotkey to containers.  Defaults to D.
 * Adds the context menu command "Drop One".
 
+Please note that this mod does not target corpse windows, only storage related windows and the player's backpack.
+
 Each feature can be disabled in the configuration by setting the key to None.
 
 The drop key is useful when dropping gas from barrels in one keystroke.
@@ -60,6 +62,10 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 * Special thanks to Crynano for his excellent Mod Configuration Menu. 
 
 # Change Log
+## 3.2.2
+* Fixed mod config showing the backpack sort key as a duplicate "Storage Sort Key"
+* Added note to the mod config indicating this mod does not target corpse screens.
+
 ## 3.2.1
 * Unstable beta compatibility.
 

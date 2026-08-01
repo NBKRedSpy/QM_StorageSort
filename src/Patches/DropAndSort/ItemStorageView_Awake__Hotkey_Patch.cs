@@ -18,20 +18,13 @@ namespace StorageSort.Patches.DropAndSort
     {
         public static void Postfix(ItemsStorageView __instance)
         {
-            try
-            {
-                const string GameObjectName = "SortHotkey";
+            const string GameObjectName = "SortHotkey";
 
-                if (__instance.GetComponent<ItemsStorageViewUpdate>() == null)
-                {
-                    ItemsStorageViewUpdate update = __instance.gameObject.AddComponent<ItemsStorageViewUpdate>();
-                    update.name = GameObjectName;
-                    update.ItemsStorageView = __instance;
-                }
-            }
-            catch (Exception ex)
+            if (__instance.GetComponent<ItemsStorageViewUpdate>() == null)
             {
-                Plugin.Logger.LogError(ex);
+                ItemsStorageViewUpdate update = __instance.gameObject.AddComponent<ItemsStorageViewUpdate>();
+                update.name = GameObjectName;
+                update.ItemsStorageView = __instance;
             }
         }   
     }

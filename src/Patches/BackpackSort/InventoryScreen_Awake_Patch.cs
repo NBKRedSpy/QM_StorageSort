@@ -17,15 +17,8 @@ namespace StorageSort.Patches.BackpackSort
     {
         public static void Postfix(InventoryScreen __instance)
         {
-            try
-            {
-                //Tries to add if it isn't already attached.
-                BackpackSortComponent.CreateComponent<BackpackSortComponent>(__instance);
-            }
-            catch (Exception ex)
-            {
-                Plugin.Logger.LogError(ex);
-            }
+            //Tries to add if it isn't already attached.
+            BackpackSortComponent.CreateComponent<BackpackSortComponent>(__instance);   
         }
 
     }

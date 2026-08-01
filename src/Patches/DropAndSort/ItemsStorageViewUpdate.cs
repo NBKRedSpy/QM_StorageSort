@@ -1,4 +1,6 @@
 ﻿using MGSC;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -13,38 +15,56 @@ namespace StorageSort.Patches.DropAndSort
 
         public void Update()
         {
-            ItemStorage storage = ItemsStorageView?.Storage;
-
-            if (!Input.anyKeyDown) return;
-
-            InventoryScreen screen;
-
-            screen = UI.GetActiveViews().OfType<InventoryScreen>().FirstOrDefault();
-
-            //Mono doesn't like null forgiving operators
-            if (screen == null || !screen.isActiveAndEnabled) return;
-
-            if (Plugin.Config.IsRaidSortPressed())
+            try
             {
-                SortItems(storage);
-            }
-            else if (Input.GetKeyDown(Plugin.Config.DropKey))
-            {
+                ItemStorage storage = ItemsStorageView?.Storage;
 
-                for (int i = storage.Items.Count - 1; i >= 0; i--)
+                if (!Input.anyKeyDown) return;
+
+                InventoryScreen screen;
+
+                screen = UI.GetActiveViews().OfType<InventoryScreen>().FirstOrDefault();
+
+                //Mono doesn't like null forgiving operators
+                if (screen == null || !screen.isActiveAndEnabled) return;
+
+                if (Plugin.Config.IsRaidSortPressed())
                 {
-                    BasePickupItem item = storage.Items[i];
-
-                    screen.DragControllerDropOutsideCallback(item);
-                    screen.DragControllerInteractionCallback(InventoryInteractionType.DropOutside);
-                    screen.DragControllerRefreshCallback();
-
+                    SortItems(storage);
                 }
+                else if (InputHelper.GetKeyDown(Plugin.Config.DropKey))
+                {
 
-                //Sort the results.
-                SortItems(storage);
+                    DropAllItems(storage.Items);
 
-                screen.Hide();
+                    //Sort the results.
+                    SortItems(storage);
+
+                    screen.Hide();
+                }
+            }
+            catch (Exception ex)
+            {
+                Plugin.Logger.LogError(ex);
+            }
+        }
+
+        /// <summary>
+        /// Drops all of the items from the specified storage.
+        /// </summary>
+        /// <param name="storage"></param>
+        public static void DropAllItems(List<BasePickupItem> items)
+        {
+            InventoryScreen screen = UI.Get<InventoryScreen>();
+
+            for (int i = items.Count - 1; i >= 0; i--)
+            {
+                BasePickupItem item = items[i];
+
+                screen.DragControllerDropOutsideCallback(item);
+                screen.DragControllerInteractionCallback(InventoryInteractionType.DropOutside);
+                screen.DragControllerRefreshCallback();
+
             }
         }
 

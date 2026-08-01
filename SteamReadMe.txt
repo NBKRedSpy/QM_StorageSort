@@ -101,6 +101,11 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 
 [h1]Change Log[/h1]
 
+[h2]3.5.3[/h2]
+[list]
+[*]For for accidentally rolling back this mod to an old version when updating to 1.0.  Special thanks to Steam user PlagueBringerRatKing for reporting this.
+[/list]
+
 [h2]3.5.2[/h2]
 [list]
 [*]Fix for after raid throwing exception due to Arsenal Screen check.  Did not affect game otherwise.
@@ -121,34 +126,4 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 [*]Added "drop all" to corpse items.
 [*]Changed player backpack sort to not require modifier key by default.
 [*]Fix for keys conflicting with open context menu.
-[/list]
-
-[h2]3.3.0[/h2]
-[list]
-[*]Fixed Drop One command not using an AP like what the game's Drop command does.
-[/list]
-
-[h2]3.2.0[/h2]
-[list]
-[*]0.9.7+ Only
-[*]Added ability to sort the player's backpack when in raid.
-[/list]
-
-[h2]3.1.0[/h2]
-[list]
-[*]0.9.7+ Only
-[*]Added MCM support for key binding.
-[*]Fix for sort key invoked while in space.  Missed in previous update.
-[*]Internal - Upgraded MCM configuration and all related requirements to the latest versions.
-[/list]
-
-[h2]3.0.1[/h2]
-[list]
-[*]0.9.7+ Only
-[*]Fix for sort key invoking when not focused.
-[/list]
-
-[h2]3.0.0[/h2]
-[list]
-[*]Added space cargo screen sort.  This functionality was previously available via the Sort To Tabs mod; However, the game now has a cargo distribution ability and that mod has been decommissioned.
 [/list]

@@ -11,6 +11,8 @@ Features:
 [*]Adds the context menu command "Drop One".
 [/list]
 
+Please note that this mod does not target corpse windows, only storage related windows and the player's backpack.
+
 Each feature can be disabled in the configuration by setting the key to None.
 
 The drop key is useful when dropping gas from barrels in one keystroke.
@@ -101,6 +103,12 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 [/list]
 
 [h1]Change Log[/h1]
+
+[h2]3.2.2[/h2]
+[list]
+[*]Fixed mod config showing the backpack sort key as a duplicate "Storage Sort Key"
+[*]Added note to the mod config indicating this mod does not target corpse screens.
+[/list]
 
 [h2]3.2.1[/h2]
 [list]

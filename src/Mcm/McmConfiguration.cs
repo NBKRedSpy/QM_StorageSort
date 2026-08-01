@@ -16,7 +16,7 @@ namespace StorageSort.Mcm
             ModConfigMenuAPI.RegisterModConfig("Storage Sort", new List<IConfigValue>()
             {
                 CreateEnumDropdown<KeyCode>(nameof(ModConfig.SortKey), "Sort Key when a storage container is open.", "Storage Sort Key", sort: true),
-                CreateEnumDropdown<KeyCode>(nameof(ModConfig.BackpackSortModifierKey), "If not set to 'None', requires this key and the Sort Key to be held down to sort the player's backpack. Otherwise only the sort key is required. Generally this is set to LeftShift.  ", "Backpack Storage Sort Modifier Key", sort: true),
+                CreateEnumDropdown<KeyCode>(nameof(ModConfig.BackpackSortModifierKey), "If not set to 'None', requires this key and the Sort Key to be held down to sort the player's backpack. Otherwise only the sort key is required. Generally this is set to LeftShift.  ", "Storage Sort Key", sort: true),
                 CreateEnumDropdown<KeyCode>(nameof(ModConfig.SpaceSortKey), "Sort Key when on the ship.", "Ship Sort Key", sort: true),
                 CreateEnumDropdown<KeyCode>(nameof(ModConfig.DropKey), "Key to drop all items from a container", "Drop All Key",sort: true),
                 new ConfigValue("__ContextNote", 

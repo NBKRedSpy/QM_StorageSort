@@ -5,13 +5,14 @@
 # Docs
 
 Features:
-* Adds sort the many of the inventory screens in raid and in space.  Defaults to S.
-* Adds a Drop All hotkey to containers and corpses.  Defaults to D.
+* Adds a Sort hotkey to the containers in a raid as well as cargo screens in space.  Both default to S.  
+* Adds the ability to sort the merc's backpack when in a raid.  Defaults to Shift+S.
+* Adds a Drop All hotkey to containers.  Defaults to D.
 * Adds the context menu command "Drop One".
 
 Each feature can be disabled in the configuration by setting the key to None.
 
-The drop all key is useful when dropping gas from barrels in one keystroke.
+The drop key is useful when dropping gas from barrels in one keystroke.
 
 The "Drop One" command is useful when dropping a single item from a stack to keep a door open.  For example, a piece of plastic.
 
@@ -39,7 +40,7 @@ The configuration file will be created on the first game run and can be found at
 |Name|Default|Description|
 |--|--|--|
 |SortKey|S|The key that sorts the current storage inventory when in a raid.|
-|BackpackSortModifierKey|None|The key to hold down while pressing the 'Sort Key' to sort the player's backpack instead of a container. Set to None to not require a modifier key. This currently only works when in a raid.|
+|BackpackSortModifierKey|Shift|The key to hold down while pressing the 'Sort Key' to sort the player's backpack instead of a container. Set to None to disable backpack sort. This currently only works when in a raid.|
 |SpaceSortKey|S|The key that sorts the current storage inventory when in space.|
 |DropKey|D|Drops all items in a container.|
 

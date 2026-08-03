@@ -60,7 +60,7 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_StorageSor
 
 # Change Log
 ## 3.5.3
-* For for accidentally rolling back this mod to an old version when updating to 1.0.  Special thanks to Steam user PlagueBringerRatKing for reporting this.
+* Fix for accidentally rolling back this mod to an old version when updating to 1.0.  Special thanks to Steam user PlagueBringerRatKing for reporting this.
 
 ## 3.5.2
 * Fix for after raid throwing exception due to Arsenal Screen check.  Did not affect game otherwise.

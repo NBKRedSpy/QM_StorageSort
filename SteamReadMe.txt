@@ -1,4 +1,4 @@
-[h1]Storage Sort, Drop, and Single Drop[/h1]
+[h1]Storage and Backpack Sort, Drop, and Drop One[/h1]
 
 
 [h1]Docs[/h1]
@@ -6,6 +6,7 @@
 Features:
 [list]
 [*]Adds sort the many of the inventory screens in raid and in space.  Defaults to S.
+[*]Adds backpack sort.  Defaults to S, but can be a different binding than the normal sort.
 [*]Adds a Drop All hotkey to containers and corpses.  Defaults to D.
 [*]Adds the context menu command "Drop One".
 [/list]
